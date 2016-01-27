@@ -1,0 +1,7 @@
+{{#if template}}
+  {{#link-to route}}
+    {{yield}}
+  {{/link-to}}
+{{else}}
+  {{link-to routeLabel route}}
+{{/if}}
