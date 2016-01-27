@@ -1,0 +1,9 @@
+{{#ted-subnav}}
+  {{ted-subnav-item 'Talks' 'talks.index'}}
+  {{ted-subnav-item 'Add new' 'talks.new'}}
+  {{#ted-subnav-item onClick=(action 'localAction') right=true}}
+    <i class='fa fa-plus'></i> New transfer
+  {{/ted-subnav-item}}
+{{/ted-subnav}}
+
+{{outlet}}

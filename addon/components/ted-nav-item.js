@@ -35,7 +35,11 @@ export default Ember.Component.extend({
   // }),
   currentRouteName: computed.readOnly('appNav.emberRouter.currentRouteName'),
   isActive: computed('currentRouteName', function() {
-    return this.get('currentRouteName') === this.get('route');
+    if (!this.get('currentRouteName')) {
+      return;
+    }
+
+    return this.get('currentRouteName').split('.').indexOf(this.get('route')) > -1
   }),
 
   isNotActive: computed.not('isActive'),

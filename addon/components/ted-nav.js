@@ -6,6 +6,7 @@ export default Ember.Component.extend({
 
   _tedAppNav: true,
 
+  subnavState: Ember.inject.service('ted-subnav-state'),
   resolution: Ember.inject.service(),
   tagName: 'ul',
   classNames: ['Ted-nav nav nav-flaps'],
@@ -56,6 +57,11 @@ export default Ember.Component.extend({
 
   updateInDOM: Ember.on('didInsertElement', function() {
     this.set('inDOM', true);
+
+    // Indicate we've rendered, to let subnavs know they can start animating
+    Ember.run.next(() => {
+      this.set('subnavState.tedNavHasRendered', true);
+    });
   }),
 
   stealRouter: Ember.on('init', function() {

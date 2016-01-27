@@ -1,0 +1,18 @@
+.Ted-subnav {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  clear: both;
+  list-style-type: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.Ted-subnav-wrapper {
+  overflow: hidden;
+
+  &__inner {
+    &--should-transition {
+      // Note: this transition duration has to match the duration property in ted-subnav.js
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+}

@@ -7,7 +7,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('home', {path: '/'});
-  this.route('talks');
+  this.route('talks', function() {
+    this.route('index');
+    this.route('new');
+  });
   this.route('users');
   this.route('conferences');
   this.route('settings');

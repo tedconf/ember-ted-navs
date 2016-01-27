@@ -1,0 +1,28 @@
+.Ted-subnav-item {
+  float: left;
+  padding: 0;
+  margin-right: 0.5em;
+
+  a {
+    display: block;
+    padding: 3px 6px;
+    min-width: 90px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    color: #999;
+
+    transition: all 0.15s;
+
+    &.active {
+      background-color: #eee;
+    }
+    &.active,
+    &:hover,
+    &:focus {
+      color: #333;
+      font-weight: 700;
+    }
+  }
+}
