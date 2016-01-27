@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="navbar-header">
+    {{#if hamburger}}
+      <div class="dropdown navbar-hamburger">
+        <button class="navbar-hamburger-button" data-toggle="dropdown">
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+
+        <ul class="dropdown-menu navbar-hamburger-dropdown" role="menu">
+          <li role="presentation">
+            <a href="http://inside.ted.com">Inside</a>
+          </li>
+
+          <li role="presentation" class="divider"></li>
+
+          <li role="presentation">
+            <a href="http://cds.ted.com">CDS</a>
+          </li>
+          <li role="presentation">
+            <a href="http://dam.ted.com">DAM</a>
+          </li>
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+
+  {{#link-to 'application' class='navbar-brand'}}
+    <span class="navbar-brand-logo s-logo-tiny">TED</span>
+    <span class="navbar-name">{{name}}</span>
+  {{/link-to}}
+
+  {{yield}}
+</div>
