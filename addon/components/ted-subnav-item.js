@@ -7,6 +7,12 @@ const TedSubnavItem = Ember.Component.extend({
   classNames: ['Ted-subnav-item'],
   classNameBindings: ['right:pull-right'],
 
+  route: Ember.computed('params.[]', function() {
+    let len = this.get('params.length');
+
+    return this.get('params')[len - 1];
+  }),
+
   actions: {
     handleOnClick() {
       this.get('onClick')();

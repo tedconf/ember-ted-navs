@@ -2,12 +2,14 @@
 
 <div class="container">
   {{#ted-nav}}
-    {{ted-nav-item route='home'}}
-    {{ted-nav-item route='talks' label='TED Talks'}}
-    {{ted-nav-item route='users'}}
-    {{ted-nav-item route='conferences'}}
+    {{#ted-nav-item 'home'}}
+      Home
+    {{/ted-nav-item}}
+    {{ted-nav-item 'TED Talks' 'talks'}}
+    {{ted-nav-item 'Users' 'users'}}
+    {{ted-nav-item 'Conferences' 'conferences'}}
 
-    {{#ted-nav-item route='settings' label='Settings' class='pull-right'}}
+    {{#ted-nav-item 'settings' class='pull-right'}}
       <i class="fa fa-gear"></i>
     {{/ted-nav-item}}
   {{/ted-nav}}

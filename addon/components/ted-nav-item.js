@@ -4,15 +4,14 @@ import layout from '../templates/components/ted-nav-item';
 const { capitalize } = Ember.String;
 const { computed } = Ember;
 
-export default Ember.Component.extend({
+const TedNavItem = Ember.Component.extend({
   layout,
   classNames: ['Ted-nav-item'],
 
-  route: null,
-  label: null,
+  route: computed('params.[]', function() {
+    let len = this.get('params.length');
 
-  routeLabel: computed('label', 'route', function() {
-    return this.get('label') ? this.get('label') : capitalize(this.get('route'));
+    return this.get('params')[len - 1];
   }),
 
   /* Private */
@@ -71,3 +70,7 @@ export default Ember.Component.extend({
   })
 
 });
+
+TedNavItem.reopenClass({ positionalParams: 'params' });
+
+export default TedNavItem;

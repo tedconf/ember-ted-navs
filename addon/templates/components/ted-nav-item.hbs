@@ -1,7 +1,7 @@
-{{#if hasBlock}}
-  {{#link-to route}}
+{{#link-to route}}
+  {{#if hasBlock}}
     {{yield}}
-  {{/link-to}}
-{{else}}
-  {{link-to routeLabel route}}
-{{/if}}
+  {{else}}
+    {{params.[0]}}
+  {{/if}}
+{{/link-to}}

@@ -1,25 +1,21 @@
-{{#if hasBlock}}
+{{#if onClick}}
 
-  <a {{action 'handleOnClick'}} href='#'>{{yield}}</a>
+  <a {{action 'handleOnClick'}} href='#'>
+    {{#if hasBlock}}
+      {{yield}}
+    {{else}}
+      {{params.[0]}}
+    {{/if}}
+  </a>
 
 {{else}}
 
-  {{#if onClick}}
-    <a {{action 'handleOnClick'}} href='#'>
-      {{#if hasBlock}}
-        {{yield}}
-      {{else}}
-        {{params.[0]}}
-      {{/if}}
-    </a>
-  {{else}}
-    {{#link-to params.[1]}}
-      {{#if hasBlock}}
-        {{yield}}
-      {{else}}
-        {{params.[0]}}
-      {{/if}}
-    {{/link-to}}
-  {{/if}}
+  {{#link-to route}}
+    {{#if hasBlock}}
+      {{yield}}
+    {{else}}
+      {{params.[0]}}
+    {{/if}}
+  {{/link-to}}
 
 {{/if}}
