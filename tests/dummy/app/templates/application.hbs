@@ -9,7 +9,7 @@
     {{ted-nav-item 'Users' 'users'}}
     {{ted-nav-item 'Conferences' 'conferences'}}
 
-    {{#ted-nav-item 'settings' right=true}}
+    {{#ted-nav-item right=true onClick=(action 'applicationAction')}}
       <i class="fa fa-gear"></i>
     {{/ted-nav-item}}
   {{/ted-nav}}

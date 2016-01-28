@@ -1,7 +1,21 @@
-{{#link-to route}}
-  {{#if hasBlock}}
-    {{yield}}
-  {{else}}
-    {{params.[0]}}
-  {{/if}}
-{{/link-to}}
+{{#if onClick}}
+
+  <a {{action 'handleOnClick'}} href='#'>
+    {{#if hasBlock}}
+      {{yield}}
+    {{else}}
+      {{params.[0]}}
+    {{/if}}
+  </a>
+
+{{else}}
+
+  {{#link-to route}}
+    {{#if hasBlock}}
+      {{yield}}
+    {{else}}
+      {{params.[0]}}
+    {{/if}}
+  {{/link-to}}
+
+{{/if}}

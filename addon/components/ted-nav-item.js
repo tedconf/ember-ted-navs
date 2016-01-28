@@ -68,7 +68,14 @@ const TedNavItem = Ember.Component.extend({
       this.set('appNav', appNav);
       appNav.registerNavItem(this);
     });
-  })
+  }),
+
+  actions: {
+    handleOnClick() {
+      this.get('onClick')();
+    }
+  }
+
 
 });
 
