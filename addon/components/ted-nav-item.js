@@ -19,7 +19,8 @@ const TedNavItem = Ember.Component.extend({
   tagName: 'li',
   classNameBindings: [
     ':Ted-app-nav-item',
-    'isActive:active'
+    'isActive:active',
+    'right:pull-right'
     // 'isActive:Ted-app-nav-item--is-active',
     // 'isBecomingActive:Ted-app-nav-item--is-becoming-active'
   ],
