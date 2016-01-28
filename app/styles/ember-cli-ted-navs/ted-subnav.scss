@@ -1,9 +1,19 @@
 .Ted-subnav {
-  padding-top: 15px;
-  padding-bottom: 15px;
   clear: both;
   list-style-type: none;
   border-bottom: 1px solid #ddd;
+  overflow: hidden;
+  max-height: 200px;
+
+  &__content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  &--should-transition {
+    // Note: this transition duration has to match the duration property in ted-subnav.js
+    transition: max-height 0.3s ease-in-out;
+  }
 }
 
 .Ted-subnav-wrapper {

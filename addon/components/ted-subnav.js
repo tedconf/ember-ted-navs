@@ -36,13 +36,20 @@ export default Ember.Component.extend({
 
     let $clone = this.$().clone();
     $clone.removeAttr('id');
-    this.$().parent().prepend($clone);
+    $clone.removeClass('ember-view');
+
+    let $previousSibling = this.$().prev();
+    let $parent = this.$().parent();
 
     Ember.run.schedule('afterRender', () => {
       if (this.get('shouldAnimateOut')) {
+        if ($previousSibling.length) {
+          $previousSibling.after($clone);
+        } else {
+          $parent.prepend($clone);
+        }
+
         this.animateOut($clone);
-      } else {
-        $clone.remove();
       }
     });
 
@@ -57,28 +64,26 @@ export default Ember.Component.extend({
     let $mainContent = Ember.$('.Ted-subnav-wrapper__inner');
     let offset = this.$().outerHeight();
 
-    $mainContent.removeClass('Ted-subnav-wrapper__inner--should-transition');
-    $mainContent.css('transform', `translateY(-${offset}px)`);
+    this.$().removeClass('Ted-subnav--should-transition');
+    this.$().css('max-height', 0);
 
     Ember.run.next(() => {
-      $mainContent.addClass('Ted-subnav-wrapper__inner--should-transition');
-      $mainContent.css('transform', `translateY(0)`);
+      this.$().addClass('Ted-subnav--should-transition');
+      this.$().css('max-height', '200px');
     });
   },
 
   animateOut($clone) {
     // Note: this duration has to match the transition time in ted-subnav.scss
-    let duration = 200;
+    let duration = 300;
     let offset = $clone.outerHeight();
     let $mainContent = Ember.$('.Ted-subnav-wrapper__inner');
 
-    $mainContent.addClass('Ted-subnav-wrapper__inner--should-transition');
-    $mainContent.css('transform', `translateY(-${offset}px)`);
+    $clone.addClass('Ted-subnav--should-transition');
+    $clone.css('max-height', '0');
 
     Ember.run.later(() => {
-      $mainContent.removeClass('Ted-subnav-wrapper__inner--should-transition');
       $clone.remove();
-      $mainContent.css('transform', `translateY(0px)`);
     }, duration);
   }
 
