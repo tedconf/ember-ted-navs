@@ -1,1 +1,1 @@
-export { default } from 'ember-cli-ted-navs/components/ted-navbar';
+export { default } from 'ember-ted-navs/components/ted-navbar';

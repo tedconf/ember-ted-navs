@@ -1,26 +1,37 @@
-# Ember-cli-ted-navs
+# Ember CLI TED Navs
 
-This README outlines the details of collaborating on this Ember addon.
+> This addon is prepared for internal use by TED and is open-sourced for educational purposes but will not be supported for shared community use.
+
+This addon adds several TED-themed navigation components to your app.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+This addon relies on TED Bootstrap, so first ensure that [Ember CLI TED Bootstrap](https://github.com/tedconf/ember-cli-ted-bootstrap) is installed.
 
-## Running
+Then, install using
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+```sh
+ember install ember-ted-navs
+```
 
-## Running Tests
+## Components
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+### ted-navbar
 
-## Building
+Blockless form:
 
-* `ember build`
+```hbs
+{{ted-navbar name='My App'}}
+```
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+`<ted-navbar>` accepts an optional block, so you can add additional Bootstrap elements to the navbar:
+
+```hbs
+{{#ted-navbar name='My App'}}
+  
+{{/ted-navbar}}
+```
+
+### ted-nav
+
+### ted-subnav

@@ -1,4 +1,23 @@
-{{ted-navbar name='Hoover'}}
+{{ted-page-header
+  subheading='Ember'
+  slim-heading='TED'
+  strong-heading='Navs'
+  byline='Navigational components for your Ember app'
+  github='http://github.com/tedconf/ember-ted-navs'}}
+
+<div class="container wider-container">
+  <h2>Installation</h2>
+  <p>This addon requires on <a href="https://github.com/tedconf/ember-cli-ted-bootstrap">Ember CLI TED Bootstrap</a>, so make sure to install that first.</p>
+  <p>Then, install this addon using</p>
+  <p><pre>ember install ember-ted-navs</pre></p>
+
+  <h2>Quickstart</h2>
+  <p>Here's a demo of the navigation elements working together:</p>
+  <div class="Demo">
+{{!-- BEGIN-SNIPPET demo-app --}}
+{{!-- application.hbs --}}
+
+{{ted-navbar name='My App'}}
 
 <div class="container">
   {{#ted-nav}}
@@ -16,4 +35,158 @@
 
   {{outlet}}
 </div>
+{{!-- END-SNIPPET --}}
+  </div>
 
+  <div>
+    <p>And the associated code:</p>
+    {{code-snippet name='demo-app.hbs'}}
+    {{code-snippet name='demo-app-talks.hbs'}}
+  </div>
+
+  <h2>Components</h2>
+  <section>
+    <h3>&lt;ted-navbar&gt;</h3>
+    <p>An application-wide header:</p>
+    <div class="UI-Element">
+      <div class="UI-Element__example-view">
+        <p class="UI-Element__example-label">Example</p>
+        {{!-- BEGIN-SNIPPET ted-navbar --}}
+        {{ted-navbar name='My App'}}
+        {{!-- END-SNIPPET --}}
+        <div class="UI-Element__example-use">
+          {{code-snippet name='ted-navbar.hbs'}}
+        </div>
+      </div>
+    </div>
+
+    <p>Accepts a block for further customization, for example additional <a href="http://getbootstrap.com/components/#navbar">Bootstrap navbar components</a>:</p>
+
+    <div class="UI-Element">
+      <div class="UI-Element__example-view">
+        <p class="UI-Element__example-label">Example</p>
+        {{!-- BEGIN-SNIPPET ted-navbar-block --}}
+        {{#ted-navbar name='My App'}}
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        {{/ted-navbar}}
+        {{!-- END-SNIPPET --}}
+        <div class="UI-Element__example-use">
+          {{code-snippet name='ted-navbar-block.hbs'}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>&lt;ted-nav&gt; and &lt;ted-nav-item&gt;</h3>
+    <p>Primary navigation element, typically used for an application's main routes:</p>
+    <div class="UI-Element">
+      <div class="UI-Element__example-view">
+        <p class="UI-Element__example-label">Example</p>
+        {{!-- BEGIN-SNIPPET ted-nav --}}
+        {{#ted-nav}}
+          {{ted-nav-item 'Home' 'home'}}
+          {{ted-nav-item 'TED Talks' 'talks'}}
+          {{ted-nav-item 'Users' 'users'}}
+          {{ted-nav-item 'Conferences' 'conferences'}}
+        {{/ted-nav}}
+        {{!-- END-SNIPPET --}}
+        <div class="UI-Element__example-use u-margin-top">
+          {{code-snippet name='ted-nav.hbs'}}
+        </div>
+      </div>
+    </div>
+    <p>Each &lt;ted-nav-item&gt; has the same api as Ember's <code>&lbrace;&lbrace;link-to&rbrace;&rbrace;</code>. The blockless form takes two positional parameters, <code>label</code> followed by <code>route</code>. It also accepts a block with a single positional param for <code>route</code>, yielding to the block for the label:</p>
+    <div class="UI-Element">
+      <div class="UI-Element__example-view">
+        <p class="UI-Element__example-label">Example</p>
+        {{!-- BEGIN-SNIPPET ted-nav-block --}}
+        {{#ted-nav}}
+          {{#ted-nav-item 'home'}}
+            <i class='fa fa-home'></i> Welcome home!
+          {{/ted-nav-item}}
+          {{ted-nav-item 'TED Talks' 'talks'}}
+          {{ted-nav-item 'Users' 'users'}}
+          {{ted-nav-item 'Conferences' 'conferences'}}
+        {{/ted-nav}}
+        {{!-- END-SNIPPET --}}
+        <div class="UI-Element__example-use u-margin-top">
+          {{code-snippet name='ted-nav-block.hbs'}}
+        </div>
+      </div>
+    </div>
+    <p>Additionally you can use a ted-nav-item to initiate an action, instead of link to a route, by passing an <code>onClick</code> handler to it. In this case, you can pass a single positional param as the label, or pass a block:</p>
+    <div class="UI-Element">
+      <div class="UI-Element__example-view">
+        <p class="UI-Element__example-label">Example</p>
+        {{!-- BEGIN-SNIPPET ted-nav-action --}}
+        {{#ted-nav}}
+          {{ted-nav-item 'Do it to it' onClick=(action (mut someVar))}}
+          {{#ted-nav-item right=true onClick=(action (mut someVar))}}
+            <i class='fa fa-plus'></i> Add transfer
+          {{/ted-nav-item}}
+        {{/ted-nav}}
+        {{!-- END-SNIPPET --}}
+        <div class="UI-Element__example-use u-margin-top">
+          {{code-snippet name='ted-nav-action.hbs'}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>&lt;ted-subnav&gt; and &lt;ted-subnav-item&gt;</h3>
+    <p>Secondary navigation element, used for child routes or route-specific actions.</p>
+    <div class="UI-Element">
+      <div class="UI-Element__example-view">
+        <p class="UI-Element__example-label">Example</p>
+        {{!-- BEGIN-SNIPPET ted-subnav --}}
+        {{#ted-subnav}}
+          {{ted-subnav-item 'All talks' 'talks.index'}}
+          {{ted-subnav-item 'New talk' 'talks.new'}}
+        {{/ted-subnav}}
+        {{!-- END-SNIPPET --}}
+        <div class="UI-Element__example-use u-margin-top">
+          {{code-snippet name='ted-subnav.hbs'}}
+        </div>
+      </div>
+    </div>
+    <p>&lt;ted-subnav-item&gt; has exactly the same api as ted-nav-item, so you can use it for navigation or actions, and it accepts a block:</p>
+    <div class="UI-Element">
+      <div class="UI-Element__example-view">
+        <p class="UI-Element__example-label">Example</p>
+        {{!-- BEGIN-SNIPPET ted-subnav-custom --}}
+        {{#ted-subnav}}
+          {{ted-subnav-item 'All talks' 'talks.index'}}
+          {{#ted-subnav-item 'talks.new'}}
+            <i class='fa fa-star'></i> New talk
+          {{/ted-subnav-item}}
+          {{#ted-subnav-item right=true onClick=(action (mut somethingElse))}}
+            <i class='fa fa-thumbs-up'></i> Hack the planet
+          {{/ted-subnav-item}}
+        {{/ted-subnav}}
+        {{!-- END-SNIPPET --}}
+        <div class="UI-Element__example-use u-margin-top">
+          {{code-snippet name='ted-subnav-custom.hbs'}}
+        </div>
+      </div>
+    </div>
+    <p>Finally, when used in combination with &lt;ted-nav&gt;, &lt;ted-subnav&lt; will animate open and closed, when navigating between routes that do and don't have a subnav. Note that going from one route with a subnav to another will not trigger animation.</p>
+    <p>See the demo at the top for an example of this.</p>
+  </section>
+</div>

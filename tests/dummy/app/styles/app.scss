@@ -1,1 +1,73 @@
-@import 'ember-cli-ted-navs/styles';
+@import 'ember-ted-docs/styles';
+@import 'ember-ted-navs/styles';
+
+h2 {
+  margin-top: 50px;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+.wider-container {
+  @media (min-width: 768px) {
+    width: 780px;
+  }
+  @media (min-width: 992px) {
+    width: 1000px;
+  }
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
+}
+
+.Demo {
+  box-shadow: 0 27px 24px 0 rgba(0,0,0,0.2),0 40px 77px 0 rgba(0,0,0,0.22);
+  overflow: hidden;
+  height: 600px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+.UI-Element {
+  margin-bottom: 30px;
+
+  &__example-view {
+    padding: 50px 10px 30px;
+    position: relative;
+    border: 1px solid #ddd;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+
+  &__example-label {
+    font-size: 10px;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 5px;
+    background: #eee;
+    border-bottom-right-radius: 4px;
+  }
+
+  &__example-use {
+    background-color: rgb(250,250,250);
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+    & .hljs {
+      background: transparent;
+      border: none;
+    }
+  }
+}
+
+.u-margin-top {
+  margin-top: 15px;
+}

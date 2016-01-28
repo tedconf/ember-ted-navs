@@ -1,1 +1,1 @@
-export { default } from 'ember-cli-ted-navs/services/ted-subnav-state';
+export { default } from 'ember-ted-navs/services/ted-subnav-state';

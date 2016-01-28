@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-ted-navs'
+  name: 'ember-ted-navs'
 };
