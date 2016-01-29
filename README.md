@@ -4,34 +4,6 @@
 
 This addon adds several TED-themed navigation components to your app.
 
-## Installation
+## Docs
 
-This addon relies on TED Bootstrap, so first ensure that [Ember CLI TED Bootstrap](https://github.com/tedconf/ember-cli-ted-bootstrap) is installed.
-
-Then, install using
-
-```sh
-ember install ember-ted-navs
-```
-
-## Components
-
-### ted-navbar
-
-Blockless form:
-
-```hbs
-{{ted-navbar name='My App'}}
-```
-
-`<ted-navbar>` accepts an optional block, so you can add additional Bootstrap elements to the navbar:
-
-```hbs
-{{#ted-navbar name='My App'}}
-  
-{{/ted-navbar}}
-```
-
-### ted-nav
-
-### ted-subnav
+Check out the [interactive documentation](http://tedconf.github.io/ember-ted-navs/) for installation and usage instructions.
