@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/ted-nav';
+import getOwner from 'ember-getowner-polyfill';
 
 export default Ember.Component.extend({
   layout,
@@ -42,7 +43,7 @@ export default Ember.Component.extend({
     // Dummy get to "initialize" resolution service
     this.get('resolution.width');
 
-    this.set('applicationController', this.container.lookup('controller:application'));
+    this.set('applicationController', getOwner(this).lookup('controller:application'));
   }),
 
   registerNavItem(item) {
@@ -65,7 +66,7 @@ export default Ember.Component.extend({
   }),
 
   stealRouter: Ember.on('init', function() {
-    const router = this.container.lookup('router:main');
+    const router = getOwner(this).lookup('router:main');
     this.set('emberRouter', router);
   }),
 

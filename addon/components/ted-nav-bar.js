@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import getOwner from 'ember-getowner-polyfill';
 
 export default Ember.Component.extend({
 
@@ -26,11 +27,11 @@ export default Ember.Component.extend({
   }),
 
   setupAppController: Ember.on('init', function() {
-    this.set('applicationController', this.container.lookup('controller:application'));
+    this.set('applicationController', getOwner(this).lookup('controller:application'));
   }),
 
   setupIsTransitioning: Ember.on('init', function() {
-    let router = this.container.lookup('router:main');
+    let router = getOwner(this).lookup('router:main');
     this.set('router', router);
 
     router.on('willTransition.tedAppNavBar', () => {
